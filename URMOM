@@ -1,6 +1,1 @@
-userids = {
-[1554757778] = true,
-[720247197] = true,
-[4332] = true
-}
-return userids
+local message = 'Your Mom' game:GetService('Players').LocalPlayer:Kick(message)
