@@ -1,38 +1,90 @@
-	local lib = require(game.ReplicatedStorage:WaitForChild('Framework'):WaitForChild('Library')) 
-	function comma_value(amount)
-
-		local formatted = amount
-
-		while true do  
-
-			formatted, k = string.gsub(formatted, "^(-?%d+)(%d%d%d)", '%1,%2')
-
-			if (k == 0) then
-
-				break
-
+		elseif TextBox.Text ".t brown" then
+			local lastPost = game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart").position
+			workspace.Remote.loadchar:InvokeServer("", "Brown")
+			wait()
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(lastPost)
+		elseif TextBox.Text == ".rj" then
+			game:GetService("TeleportService"):Teleport(155615604, player)
+		elseif TextBox.Text == ".killpris" then
+			game.Workspace.Remote.ItemHandler:InvokeServer(workspace.Prison_ITEMS.giver["Remington 870"].ITEMPICKUP)
+			function getPacketFromPlayer(tget)
+				return {
+					["RayObject"] = Ray.new(Vector3.new(0,0,0), Vector3.new(0,0,0)),
+					["Distance"] = 0,
+					["Cframe"] = CFrame.new(0,0,0,0,0,0,0,0,0,0,0,0),
+					["Hit"] = tget.Character.Head
+				}
 			end
-
+			local arg1 = {}
+			for i,v in pairs(game:GetService("Teams").Inmates:GetPlayers()) do
+				for i2=1,7 do 
+					table.insert(arg1,getPacketFromPlayer(v))
+				end
+			end
+			local gun = game.Players.LocalPlayer.Backpack['Remington 870']
+			game:GetService('ReplicatedStorage').ShootEvent:FireServer(arg1,gun)
+		elseif TextBox.Text == ".kpris" then
+			game.Workspace.Remote.ItemHandler:InvokeServer(workspace.Prison_ITEMS.giver["Remington 870"].ITEMPICKUP)
+			function getPacketFromPlayer(tget)
+				return {
+					["RayObject"] = Ray.new(Vector3.new(0,0,0), Vector3.new(0,0,0)),
+					["Distance"] = 0,
+					["Cframe"] = CFrame.new(0,0,0,0,0,0,0,0,0,0,0,0),
+					["Hit"] = tget.Character.Head
+				}
+			end
+			local arg1 = {}
+			for i,v in pairs(game:GetService("Teams").Inmates:GetPlayers()) do
+				for i2=1,7 do 
+					table.insert(arg1,getPacketFromPlayer(v))
+				end
+			end
+			local gun = game.Players.LocalPlayer.Backpack['Remington 870']
+			game:GetService('ReplicatedStorage').ShootEvent:FireServer(arg1,gun)
+		elseif TextBox.Text == ".killcrim" then
+			game.Workspace.Remote.ItemHandler:InvokeServer(workspace.Prison_ITEMS.giver["Remington 870"].ITEMPICKUP)
+			function getPacketFromPlayer(tget)
+				return {
+					["RayObject"] = Ray.new(Vector3.new(0,0,0), Vector3.new(0,0,0)),
+					["Distance"] = 0,
+					["Cframe"] = CFrame.new(0,0,0,0,0,0,0,0,0,0,0,0),
+					["Hit"] = tget.Character.Head
+				}
+			end
+			local arg1 = {}
+			for i,v in pairs(game:GetService("Teams").Criminals:GetPlayers()) do
+				for i2=1,7 do 
+					table.insert(arg1,getPacketFromPlayer(v))
+				end
+			end
+			local gun = game.Players.LocalPlayer.Backpack['Remington 870']
+			game:GetService('ReplicatedStorage').ShootEvent:FireServer(arg1,gun)
+		elseif TextBox.Text == ".kcrim" then
+			game.Workspace.Remote.ItemHandler:InvokeServer(workspace.Prison_ITEMS.giver["Remington 870"].ITEMPICKUP)
+			function getPacketFromPlayer(tget)
+				return {
+					["RayObject"] = Ray.new(Vector3.new(0,0,0), Vector3.new(0,0,0)),
+					["Distance"] = 0,
+					["Cframe"] = CFrame.new(0,0,0,0,0,0,0,0,0,0,0,0),
+					["Hit"] = tget.Character.Head
+				}
+			end
+			local arg1 = {}
+			for i,v in pairs(game:GetService("Teams").Criminals:GetPlayers()) do
+				for i2=1,7 do 
+					table.insert(arg1,getPacketFromPlayer(v))
+				end
+			end
+			local gun = game.Players.LocalPlayer.Backpack['Remington 870']
+			game:GetService('ReplicatedStorage').ShootEvent:FireServer(arg1,gun)
+		elseif TextBox.Text == ".cmds" then
+			bc = BrickColor.new("White")
+			game.StarterGui:SetCore("ChatMakeSystemMessage", {
+				Text = "Commands : \n .autorespawn/autore on/off -- autorespawning Character \n .autoguns on/off -- autogive guns \n .rapidpunch on/off -- no cooldown punch \n .antibring on off -- none can bring you \n .anticrash on/off -- anti crash \n .antivoid on/off -- you cant be in void in custom team \n .re/respawn -- refresh Character \n .infammo/.ia -- inf ammo for guns \n .crash -- crashing server \n .nexus -- teleport to nexus \n .back -- teleport to back \n .armory -- teleport to armory \n .cells -- telleport to cells \n .tower -- teleport to tower \n .yard -- teleport to yard \n .cafetoria -- teleport to cafetoria \n .border -- teleport to border \n .t black -- change team to black \n .t yellow -- change team to yellow \n .t blue -- change team to blue \n .t pink -- change team to pink \n .t brown -- change team to brown \n .rj -- rejoin server \n .killcops/kcops -- killing all cops \n .killpris/kpris -- killing all prisoners \n .killcrim/kcrim -- killing all criminals ";
+				Font = Enum.Font.Cartoon;
+				Color = bc.Color;
+				FontSize = Enum.FontSize.Size96;	
+			})
 		end
-
-		return formatted
-
 	end
-
-
-
-	local diamonds = game.Players.LocalPlayer.PlayerGui.Main.Right.Diamonds.Amount
-
-	local old = diamonds.Text
-
-	local oldNumber = string.gsub(old, ",", "")
-
-	local newNumber = oldNumber * 2
-
-	local new = comma_value(newNumber)
-
-	local newString = tostring(new)
-
-	diamonds.Text = newString
-	wait(0.5)
-	lib.Message.New("Successfully Dupe ✅");
+end)
