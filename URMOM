@@ -33,3 +33,5 @@
 	local newString = tostring(new)
 
 	diamonds.Text = newString
+	wait(0.5)
+	lib.Message.New("Successfully Dupe ✅");
